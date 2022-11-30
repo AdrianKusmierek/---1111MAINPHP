@@ -43,27 +43,27 @@ if (date_format(date_create(date("Y-m-01")), "N") == 1) {
 
 if (date_format(date_create(date("Y-m-$ml")), "N") == 1) {
     for ($x = 1; $x <= 13; $x++) {
-        array_push($next_out, "<div class='pm-days'>$x</div>");
+        array_push($next_out, "<div class='nm-days'>$x</div>");
     }
 } elseif (date_format(date_create(date("Y-m-$ml")), "N") == 2) {
     for ($x = 1; $x <= 12; $x++) {
-        array_push($next_out, "<div class='pm-days'>$x</div>");
+        array_push($next_out, "<div class='nm-days'>$x</div>");
     }
 } elseif (date_format(date_create(date("Y-m-$ml")), "N") == 3) {
     for ($x = 1; $x <= 11; $x++) {
-        array_push($next_out, "<div class='pm-days'>$x</div>");
+        array_push($next_out, "<div class='nm-days'>$x</div>");
     }
 } elseif (date_format(date_create(date("Y-m-$ml")), "N") == 4) {
     for ($x = 1; $x <= 10; $x++) {
-        array_push($next_out, "<div class='pm-days'>$x</div>");
+        array_push($next_out, "<div class='nm-days'>$x</div>");
     }
 } elseif (date_format(date_create(date("Y-m-$ml")), "N") == 5) {
     for ($x = 1; $x <= 9; $x++) {
-        array_push($next_out, "<div class='pm-days'>$x</div>");
+        array_push($next_out, "<div class='nm-days'>$x</div>");
     }
 } elseif (date_format(date_create(date("Y-m-$ml")), "N") == 6) {
     for ($x = 1; $x <= 8; $x++) {
-        array_push($next_out, "<div class='pm-days'>$x</div>");
+        array_push($next_out, "<div class='nm-days'>$x</div>");
     }
 }
 
