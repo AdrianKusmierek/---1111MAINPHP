@@ -77,6 +77,18 @@ for ($y = 1; $y <= $ml; $y++) {
     }
 }
 
+foreach ($prev_out as &$value) {
+    $mainout = $mainout . $value;
+}
+
+foreach ($out as &$value) {
+    $mainout = $mainout . $value;
+}
+
+foreach ($next_out as &$value) {
+    $mainout = $mainout . $value;
+}
+
 $smarty->assign("mainout", $mainout);
 $smarty->display("index.tpl");
 ?>
