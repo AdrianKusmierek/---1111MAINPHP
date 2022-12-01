@@ -6,7 +6,12 @@
 <body>
     <main>
         <div class="week-days">
-            <p>{$smarty.now|date_format:"%B %Y"}</p>
+            <p>{$title} 2022</p>
+            <form action="index.php" method="get">
+                <label>Choose the month offset:</label>
+                <input type="number" name="m" value="1" max="12" min="1">
+                <input type="submit">
+            </form>
             <hr>
             <div class="days">
                 <div class="week">Mo</div>
@@ -19,7 +24,7 @@
             </div>
         </div>
         <div class="week-dates">
-            {$mainout}
+            {$html}
         </div>
     </main>
 </body>

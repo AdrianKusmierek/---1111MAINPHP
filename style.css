@@ -22,7 +22,7 @@ main {
     color: white;
 
     width: 60vw;
-    height: 60vh;
+    height: 67vh;
 }
 
 btn:hover {
@@ -62,7 +62,7 @@ btn:hover {
 .week-dates {
     display: grid;
     grid-template-columns: 14.25% 14.25% 14.25% 14.25% 14.25% 14.25% 14.25%;
-    grid-template-rows: 21% 21% 21% 21% 21% 21%;
+    grid-template-rows: 60px 60px 60px 60px 60px 60px;
 }
 
 .week-dates > div {
