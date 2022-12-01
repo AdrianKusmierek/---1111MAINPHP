@@ -12,17 +12,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background: radial-gradient(#323232, #000)
 }
 
 main {
     display: flex;
     flex-direction: column;
 
-    background-color: #646464;
+    background: radial-gradient(#646464, #222);
     color: white;
 
     width: 60vw;
     height: 67vh;
+
+    border: 1px solid black;
 }
 
 btn:hover {
@@ -70,11 +74,11 @@ btn:hover {
 }
 
 .pm-days, .nm-days {
-    color: grey;
+    color: #770;
 }
 
 .now {
-    background-color: grey;
+    background-color: #777;
 }
 
 /* .day-1 {
