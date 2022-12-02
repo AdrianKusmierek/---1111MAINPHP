@@ -27,6 +27,8 @@ main {
     height: 67vh;
 
     border: 1px solid black;
+
+    border-radius: 1vw;
 }
 
 btn:hover {
@@ -73,8 +75,11 @@ btn:hover {
     border: 1px solid black;
 }
 
-.pm-days, .nm-days {
+.pm-day, .nm-day {
     color: #770;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .now {
@@ -88,3 +93,38 @@ btn:hover {
 /* .day-11 {
     grid-column: 
 } */
+
+.event {
+    color: #323232;
+    background-color: white;
+
+    height: 1.5vh;
+    width: 4vw;
+
+    border-radius: 1vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.etext {
+    font-size: .7vw;
+}
+
+.day {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    height: 100%;
+}
