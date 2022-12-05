@@ -10,9 +10,6 @@ $db = "main";
 try {
     $con = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $sql = $con->prepare("select name, start, end from events where disabled != true;");
-    $sql->execute();
 } catch (PDOException $err) {
     echo "Connection Failed: " . $err->getMessage();
 }
@@ -26,6 +23,9 @@ $month_length_prev = ($pointer == 12) ? cal_days_in_month(CAL_GREGORIAN, 1, 2022
 $y = date("N", strtotime("2022-$pointer-01"));
 
 function displayEvent($sql, $pointer, $i) {
+    $sql = $con->prepare("select name, start, end from events where disabled != true;");
+    $sql->execute();
+
     $out = "";
 
     while ($r = $sql->fetch(PDO::FETCH_ASSOC)) {
