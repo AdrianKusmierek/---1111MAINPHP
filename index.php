@@ -6,9 +6,9 @@ $host = "localhost";
 $user = "root";
 $pass = "Bananek@1223";
 $db = "main";
+$con = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
 try {
-    $con = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $err) {
     echo "Connection Failed: " . $err->getMessage();
@@ -22,7 +22,7 @@ $month_length_next = ($pointer == 1) ? cal_days_in_month(CAL_GREGORIAN, 12, 2022
 $month_length_prev = ($pointer == 12) ? cal_days_in_month(CAL_GREGORIAN, 1, 2022) : cal_days_in_month(CAL_GREGORIAN, $pointer + 1, 2022);
 $y = date("N", strtotime("2022-$pointer-01"));
 
-function displayEvent($sql, $pointer, $i) {
+function displayEvent($pointer, $i, $con) {
     $sql = $con->prepare("select name, start, end from events where disabled != true;");
     $sql->execute();
 
@@ -40,7 +40,10 @@ function displayEvent($sql, $pointer, $i) {
 }
 
 for ($i = $month_length_prev + 2 - $y; $i <= $month_length_prev; $i++) {
-    $html .= "<div class='pm-day'>" . $i . "</div>";
+    // $html .= "<div class='pm-day'>" . $i . "</div>";
+    $html .= "<div class='pm-day'>" . $i . "<div class='wrapper'>";
+    $html .= displayEvent($pointer, $i, $con);
+    $html .= "</div></div>";
 }
 
 for ($i = 1; $i <= $month_length; $i++) {
@@ -48,15 +51,15 @@ for ($i = 1; $i <= $month_length; $i++) {
 
     if ($i == 1) {
         $html .= "<div class='day' style='grid-column: $y'>" . $i . "<div class='wrapper'>";
-        $html .= displayEvent($sql, $pointer, $i);
+        $html .= displayEvent($pointer, $i, $con);
         $html .= "</div></div>";
     } else if ($i == date("d") && date("m") == $pointer) {
         $html .= "<div class='now day' style='grid-column: $_x'>" . $i . "<div class='wrapper'>";
-        $html .= displayEvent($sql, $pointer, $i);
+        $html .= displayEvent($pointer, $i, $con);
         $html .= "</div></div>";
     } else {
         $html .= "<div class='day'>" . $i . "<div class='wrapper'>";
-        $html .= displayEvent($sql, $pointer, $i);
+        $html .= displayEvent($pointer, $i, $con);
         $html .= "</div></div>";
     }
 }
@@ -65,7 +68,9 @@ for ($i = 1; $i <= $month_length_next - (18 + $y); $i++) {
     if ($pointer == 1 && $i == 7) {
         continue;
     } else {
-        $html .= "<div class='nm-day'>" . $i . "</div>";
+        $html .= "<div class='nm-day'>" . $i . "<div class='wrapper'>";
+        $html .= displayEvent($pointer, $i, $con);
+        $html .= "</div></div>";
     }
 }
 
