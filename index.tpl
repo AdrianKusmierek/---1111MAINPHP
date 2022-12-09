@@ -1,7 +1,8 @@
 <html>
 <head>
-    <title>page</title>
+    <title>i officially despise php</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="ico.ico" type="image/x-icon">
 <head>
 <body>
     <main>

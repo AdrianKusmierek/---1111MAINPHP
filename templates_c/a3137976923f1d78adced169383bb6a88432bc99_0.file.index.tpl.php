@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-01 11:53:21
+/* Smarty version 4.3.0, created on 2022-12-09 09:59:34
   from 'C:\Users\maksi\Documents\Projects 2022 Laptop\---1111MAINPHP\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_638895b1d00208_01264730',
+  'unifunc' => 'content_63930706efb9c0_77858503',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a3137976923f1d78adced169383bb6a88432bc99' => 
     array (
       0 => 'C:\\Users\\maksi\\Documents\\Projects 2022 Laptop\\---1111MAINPHP\\index.tpl',
-      1 => 1669895601,
+      1 => 1670579970,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_638895b1d00208_01264730 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63930706efb9c0_77858503 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
-    <title>page</title>
+    <title>i officially despise php</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="ico.ico" type="image/x-icon">
 <head>
 <body>
     <main>
