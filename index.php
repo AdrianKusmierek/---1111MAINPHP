@@ -42,7 +42,7 @@ function displayEvent($pointer, $i, $con) {
 for ($i = $month_length_prev + 2 - $y; $i <= $month_length_prev; $i++) {
     // $html .= "<div class='pm-day'>" . $i . "</div>";
     $html .= "<div class='pm-day'>" . $i . "<div class='wrapper'>";
-    $html .= displayEvent($pointer, $i, $con);
+    $html .= displayEvent($pointer - 1, $i, $con);
     $html .= "</div></div>";
 }
 
@@ -69,7 +69,7 @@ for ($i = 1; $i <= $month_length_next - (18 + $y); $i++) {
         continue;
     } else {
         $html .= "<div class='nm-day'>" . $i . "<div class='wrapper'>";
-        $html .= displayEvent($pointer, $i, $con);
+        $html .= displayEvent($pointer + 1, $i, $con);
         $html .= "</div></div>";
     }
 }
