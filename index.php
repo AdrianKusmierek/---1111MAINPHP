@@ -31,7 +31,7 @@ function displayEvent($pointer, $i, $con) {
     while ($r = $sql->fetch(PDO::FETCH_ASSOC)) {
         $_namePointer = $r["name"];
 
-        if (date("Y-m-d", strtotime("2022-$pointer-$i")) < date("Y-m-d", strtotime($r["end"])) && date("Y-m-d", strtotime("2022-$pointer-$i")) > date("Y-m-d", strtotime($r["start"]))) {
+        if (date("Y-m-d", strtotime("2022-$pointer-$i")) < date("Y-m-d", strtotime("+1 day", strtotime($r["end"]))) && date("Y-m-d", strtotime("2022-$pointer-$i")) > date("Y-m-d", strtotime("-1 day", strtotime($r["start"])))) {
             $out .= "<div class='event event-$pointer-$i'><p class='etext'>$_namePointer</p></div>";
         }
     }
