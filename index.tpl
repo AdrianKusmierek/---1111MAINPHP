@@ -9,7 +9,7 @@
         <div class="week-days">
             <p>{$title} 2022</p>
             <form action="index.php" method="get">
-                <label>Choose the month offset:</label>
+                <label>Choose the month:</label>
                 <input type="number" name="m" value="1" max="12" min="1">
                 <input type="submit">
             </form>

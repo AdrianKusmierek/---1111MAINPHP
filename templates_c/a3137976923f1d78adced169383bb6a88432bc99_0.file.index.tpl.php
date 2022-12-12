@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2022-12-09 09:59:34
+/* Smarty version 4.3.0, created on 2022-12-12 11:41:24
   from 'C:\Users\maksi\Documents\Projects 2022 Laptop\---1111MAINPHP\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63930706efb9c0_77858503',
+  'unifunc' => 'content_63971364cad3c1_70943868',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a3137976923f1d78adced169383bb6a88432bc99' => 
     array (
       0 => 'C:\\Users\\maksi\\Documents\\Projects 2022 Laptop\\---1111MAINPHP\\index.tpl',
-      1 => 1670579970,
+      1 => 1670845282,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63930706efb9c0_77858503 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63971364cad3c1_70943868 (Smarty_Internal_Template $_smarty_tpl) {
 ?><html>
 <head>
     <title>i officially despise php</title>
@@ -33,7 +33,7 @@ function content_63930706efb9c0_77858503 (Smarty_Internal_Template $_smarty_tpl)
             <p><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
  2022</p>
             <form action="index.php" method="get">
-                <label>Choose the month offset:</label>
+                <label>Choose the month:</label>
                 <input type="number" name="m" value="1" max="12" min="1">
                 <input type="submit">
             </form>
