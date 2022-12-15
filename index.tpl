@@ -7,12 +7,15 @@
 <body>
     <main>
         <div class="week-days">
-            <p>{$title} 2022</p>
-            <form action="index.php" method="get">
-                <label>Choose the month:</label>
-                <input type="number" name="m" value="1" max="12" min="1">
-                <input type="submit">
-            </form>
+            <p>{$title}</p>
+            <div class="forms">
+                <form action="index.php" method="get">
+                    <label>Choose the month and year:</label>
+                    <input type="number" name="m" value="{$smarty.now|date_format:"%m"}" max="12" min="1">
+                    <input type="number" name="y" value="{$smarty.now|date_format:"%Y"}" max="2024" min="2020">
+                    <input type="submit">
+                </form>
+            </div>
             <hr>
             <div class="days">
                 <div class="week">Mo</div>
