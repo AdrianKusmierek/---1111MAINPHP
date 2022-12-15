@@ -48,10 +48,10 @@ $y = date("N", strtotime("$pointer_y-$pointer-01"));
 
 function displayEvent($pointer, $pointer_y, $i, $con) {
     // $sql = $con->prepare("select name, start, end from events where disabled != true;");
-    $a = ($pointer == 1) ? $pointer_y - 1 : $pointer_y;
-    $b = ($pointer == 12) ? $pointer_y + 1 : $pointer_y;
+    $a = ($pointer == 1) ? "'" . $pointer_y - 1 . "-12-01'" : "'$pointer_y-$pointer-01'";
+    $b = ($pointer == 12) ? "'" . $pointer_y + 1 . "-01-01'" : "'$pointer_y-$pointer-01'";
 
-    $sql = $con->prepare("select name, start, end from events where disabled != true and start <= '$pointer_y-$pointer-01' and end >= '$pointer_y-$pointer-01' or start <= " . $a . "-$pointer-01 and end >= " . $a . "-$pointer-01 or start <= " . $b . "-$pointer-01 and end >= " . $b . "-$pointer-01;");
+    $sql = $con->prepare("select name, start, end from events where disabled != true and start <= '$pointer_y-$pointer-01' and end >= '$pointer_y-$pointer-01' or start <= " . $a . " and end >= " . $a . " or start <= " . $b . " and end >= " . $b . ";");
     $sql->execute();
 
     $out = "";
