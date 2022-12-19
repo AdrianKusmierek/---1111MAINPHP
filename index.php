@@ -53,11 +53,11 @@ $y = date("N", strtotime("$pointer_y-$pointer-01"));
 /////////////////////////////////////////////////////////////////////                 
 
 function displayEvent($pointer, $pointer_y, $i, $con) {
-    // $sql = $con->prepare("select name, start, end from events where disabled != true;");
-    $a = ($pointer == 1) ? "'" . $pointer_y - 1 . "-12-01'" : "'$pointer_y-$pointer-01'";
-    $b = ($pointer == 12) ? "'" . $pointer_y + 1 . "-01-01'" : "'$pointer_y-$pointer-01'";
-
-    $sql = $con->prepare("select name, start, end from events where disabled != true and start <= '$pointer_y-$pointer-01' and end >= '$pointer_y-$pointer-01' or disabled != true and start <= " . $a . " and end >= " . $a . " or disabled != true and start <= " . $b . " and end >= " . $b . ";");
+    $sql = $con->prepare("
+    select name, start, end from events where disabled != true and '$pointer_y-$pointer-01' >= start and '$pointer_y-$pointer-01' <= end
+    or disabled != true and '$pointer_y-$pointer-01' < start and '$pointer_y-$pointer-01' <= end or disabled != true and '$pointer_y-$pointer-01' >= start and '$pointer_y-$pointer-01' > end
+    or disabled != true and '$pointer_y-$pointer-01' < start and '$pointer_y-$pointer-01' > end;
+    ");
     $sql->execute();
 
     $out = "";
@@ -65,7 +65,7 @@ function displayEvent($pointer, $pointer_y, $i, $con) {
     while ($r = $sql->fetch(PDO::FETCH_ASSOC)) {
         $_namePointer = $r["name"];
 
-        if (date("Y-m-d", strtotime("2022-$pointer-$i")) < date("Y-m-d", strtotime("+1 day", strtotime($r["end"]))) && date("Y-m-d", strtotime("2022-$pointer-$i")) > date("Y-m-d", strtotime("-1 day", strtotime($r["start"])))) {
+        if (date("Y-m-d", strtotime("$pointer_y-$pointer-$i")) < date("Y-m-d", strtotime("+1 day", strtotime($r["end"]))) && date("Y-m-d", strtotime("$pointer_y-$pointer-$i")) > date("Y-m-d", strtotime("-1 day", strtotime($r["start"])))) {
             $out .= "<div class='event event-$pointer-$i'><p class='etext'>$_namePointer</p></div>";
         }
     }
@@ -74,7 +74,6 @@ function displayEvent($pointer, $pointer_y, $i, $con) {
 }
 
 for ($i = $month_length_prev + 2 - $y; $i <= $month_length_prev; $i++) {
-    // $html .= "<div class='pm-day'>" . $i . "</div>";
     $html .= "<div class='pm-day'>" . $i . "<div class='wrapper nc'>";
     $html .= displayEvent($pointer - 1, $pointer_y, $i, $con);
     $html .= "</div></div>";
@@ -87,7 +86,7 @@ for ($i = 1; $i <= $month_length; $i++) {
         $html .= "<div class='day' style='grid-column: $y'>" . $i . "<div class='wrapper'>";
         $html .= displayEvent($pointer, $pointer_y, $i, $con);
         $html .= "</div></div>";
-    } else if ($i == date("d") && date("m") == $pointer) {
+    } else if ($i == date("d") && date("m") == $pointer && date("Y") == $pointer_y) {
         $html .= "<div class='now day' style='grid-column: $_x'>" . $i . "<div class='wrapper'>";
         $html .= displayEvent($pointer, $pointer_y, $i, $con);
         $html .= "</div></div>";
@@ -103,7 +102,8 @@ for ($i = 1; $i <= $month_length_next - (18 + $y); $i++) {
         continue;
     } else {
         $html .= "<div class='nm-day'>" . $i . "<div class='wrapper nc'>";
-        ($pointer == 12) ? $html .= displayEvent($pointer, $pointer_y, $i, $con) : $html .= displayEvent($pointer + 1, $pointer_y, $i, $con);;
+        ($pointer == 12) ? $html .= displayEvent(1, $pointer_y + 1, $i, $con) : $html .= displayEvent($pointer + 1, $pointer_y, $i, $con);
+        // $html .= displayEvent(12, 2023, $i, $con);
         $html .= "</div></div>";
     }
 }
