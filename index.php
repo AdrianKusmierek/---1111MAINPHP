@@ -54,8 +54,10 @@ $y = date("N", strtotime("$pointer_y-$pointer-01"));
 
 function displayEvent($pointer, $pointer_y, $i, $con) {
     $sql = $con->prepare("
-    select name, start, end from events where disabled != true and '$pointer_y-$pointer-01' >= start and '$pointer_y-$pointer-01' <= end
-    or disabled != true and '$pointer_y-$pointer-01' < start and '$pointer_y-$pointer-01' <= end or disabled != true and '$pointer_y-$pointer-01' >= start and '$pointer_y-$pointer-01' > end
+    select name, start, end from events where
+    disabled != true and '$pointer_y-$pointer-01' >= start and '$pointer_y-$pointer-01' <= end
+    or disabled != true and '$pointer_y-$pointer-01' < start and '$pointer_y-$pointer-01' <= end
+    or disabled != true and '$pointer_y-$pointer-01' >= start and '$pointer_y-$pointer-01' > end
     or disabled != true and '$pointer_y-$pointer-01' < start and '$pointer_y-$pointer-01' > end;
     ");
     $sql->execute();
